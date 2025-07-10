@@ -1,6 +1,52 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      h1 {
+        font-size: 4rem;
+        color: #121212;
+        animation: fadeInScale 4s ease-out;
+      }
+
+      @keyframes fadeInScale {
+        0% {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
   <body>
-    <h1>Hello</h1>
+    <h1 id="greeting">Hello</h1>
+    <script>
+      function getGreeting() {
+        const hour = new Date().getHours();
+
+        if (hour >= 5 && hour < 12) {
+          return "Guten Morgen";
+        } else if (hour >= 12 && hour < 18) {
+          return "Guten Tag";
+        } else if (hour >= 18 && hour < 22) {
+          return "Guten Abend";
+        } else {
+          return "Gute Nacht";
+        }
+      }
+
+      document.getElementById("greeting").textContent = getGreeting();
+    </script>
   </body>
 </html>
